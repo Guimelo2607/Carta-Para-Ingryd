@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Ingryd 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #ffe6e6, #ffffff);
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carta {
+      background-color: #fff;
+      padding: 40px;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .imagem-topo {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .texto {
+      font-size: 18px;
+      white-space: pre-wrap;
+      border-right: 2px solid black;
+      overflow: hidden;
+      animation: typing 10s steps(100, end), blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      50% { border-color: transparent }
+    }
+
+    .coraçoes {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .coraçao {
+      position: absolute;
+      color: #ff5e78;
+      font-size: 24px;
+      animation: subir 4s infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes subir {
+      0% { bottom: 0; opacity: 1; }
+      100% { bottom: 100%; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="coraçoes" id="coraçoes"></div>
+
+<div class="carta">
+  <img src="/Users/guilhermemelo/Downloads/4094f2e0-1b3e-4df2-9a7a-72de28644462.JPG" alt="Foto do casal" class="imagem-topo">
+  <div class="texto" id="texto"></div>
+</div>
+
+<script>
+  const mensagem = `Ingryd, desde que você chegou, tudo em mim mudou.
+Você trouxe paz pra minha bagunça, carinho pros meus dias difíceis e amor de um jeito que eu nem sabia que existia.
+
+Quando eu olho pra você, eu vejo muito mais do que a mulher que eu amo…
+Eu vejo minha parceira de vida, a pessoa com quem quero dividir os sonhos, os planos e até os silêncios.
+Vejo a futura mãe dos nossos filhos, a razão dos meus sorrisos bobos e a dona do meu coração inteiro.
+
+Você tem esse jeitinho único que me encanta e me acolhe.
+Teu sorriso é abrigo, teu olhar me prende e teu toque me cura.
+
+Eu te amo de um jeito tão puro e intenso, que nenhum texto, poema ou música daria conta de explicar.
+Mas mesmo assim, eu tento. Porque amar você é o que me move.
+E se um dia me perguntarem o que é amor, eu só vou responder:
+“Amor é tudo o que eu sinto por ela.”
+
+Você é o meu melhor lugar.`;
+
+  let i = 0;
+  const textoEl = document.getElementById("texto");
+
+  function escreverTexto() {
+    if (i < mensagem.length) {
+      textoEl.innerHTML += mensagem.charAt(i);
+      i++;
+      setTimeout(escreverTexto, 40);
+    }
+  }
+
+  escreverTexto();
+
+  function criarCoraçao() {
+    const coracao = document.createElement("div");
+    coracao.classList.add("coraçao");
+    coracao.style.left = Math.random() * 100 + "%";
+    coracao.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    coracao.textContent = "❤️";
+    document.getElementById("coraçoes").appendChild(coracao);
+    setTimeout(() => coracao.remove(), 5000);
+  }
+
+  setInterval(criarCoraçao, 500);
+</script>
+
+</body>
+</html>
